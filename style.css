@@ -9,7 +9,7 @@ header {
     background-color: #1b8a5a;
     color: white;
     text-align: center;
-    padding: 30px 24px;
+    padding: 20px 16px;
 }
 
 h1 {
@@ -37,6 +37,43 @@ h2 {
     font-size: 18px;
     padding-bottom: 8px;
     border-bottom: 2px solid #eee;
+}
+
+/* ringkasan: tiga kotak sejajar */
+.baris-ringkasan {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+
+.kotak {
+    color: white;
+    border-radius: 10px;
+    padding: 12px 8px;
+    text-align: center;
+}
+
+.kotak p {
+    margin: 0 0 4px 0;
+    font-size: 14px;
+}
+
+.kotak strong {
+    display: block;
+    font-size: 16px;
+    overflow-wrap: anywhere;
+}
+
+.kotak-masuk {
+    background-color: #1b8a5a;
+}
+
+.kotak-keluar {
+    background-color: #d64545;
+}
+
+.kotak-saldo {
+    background-color: #2f6fde;
 }
 
 /* kartu pendapatan bersih dibuat menonjol */
@@ -112,4 +149,19 @@ li button {
 
 li button:hover {
     background-color: #b33232;
+}
+
+/* layar sempit (HP) */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 20px;
+    }
+
+    .kotak p {
+        font-size: 12px;
+    }
+
+    .kotak strong {
+        font-size: 13px;
+    }
 }

@@ -31,7 +31,12 @@ Saya menaruh tipe sebagai field di dalam objek transaksi yang sama, bukan membua
 - Penyebab: validasi hanya mengecek tanggal, kategori, dan nominal, tetapi tidak mengecek apakah jenis dan kategori cocok.
 - Cara mengatasi: saya menambah dua pengecekan di event submit. Kategori Order hanya boleh untuk pemasukan, dan Bensin/Servis/Makan hanya untuk pengeluaran.
 
-## Catatan CP
+### 2. Angka negatif tampil sebagai Rp-40.000
+- Gejala: saat pengeluaran operasional lebih besar dari pemasukan hari ini, kotak Bersih menampilkan "Rp-40.000". Penulisan yang wajar adalah "-Rp40.000".
+- Penyebab: formatRupiah() selalu menaruh "Rp" di depan angka, termasuk angka negatif.
+- Cara mengatasi: saya menambah cabang if di formatRupiah(). Kalau angka negatif, tanda minus ditulis di depan "Rp" dan angkanya diambil nilai positifnya dengan Math.abs().
+
+## Catatan per checkpoint
 - **CP1:** setup repo, struktur file, W1-W4 (tambah, daftar, hapus, localStorage).
 - **CP2:** W5 (ringkasan memakai filter dan reduce), W6 (validasi dengan pesan di halaman), fitur khas ojol (pendapatan bersih hari ini), dan tampilan kartu per bagian halaman.
-- **CP3:** 
+- **CP3:** kategori dinamis mengikuti jenis, catatan menjadi tiga kotak berwarna, tampilan responsif, perbaikan format Rupiah untuk angka negatif, serta finalisasi dokumen dan GitHub Pages.

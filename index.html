@@ -13,10 +13,21 @@
 
     <main>
         <section id="ringkasan">
-            <h2>Catatan</h2>
-            <p>Pemasukan: <span id="totalMasuk">Rp0</span></p>
-            <p>Pengeluaran: <span id="totalKeluar">Rp0</span></p>
-            <p>Saldo: <span id="saldo">Rp0</span></p>
+            <h2>Ringkasan</h2>
+            <div class="baris-ringkasan">
+                <div class="kotak kotak-masuk">
+                    <p>Pemasukan</p>
+                    <strong id="totalMasuk">Rp0</strong>
+                </div>
+                <div class="kotak kotak-keluar">
+                    <p>Pengeluaran</p>
+                    <strong id="totalKeluar">Rp0</strong>
+                </div>
+                <div class="kotak kotak-saldo">
+                    <p>Saldo</p>
+                    <strong id="saldo">Rp0</strong>
+                </div>
+            </div>
         </section>
 
         <section id="pendapatanBersih">
@@ -39,14 +50,7 @@
                 </select>
 
                 <label for="kategori">Kategori</label>
-                <select id="kategori">
-                    <option value="">-- pilih kategori --</option>
-                    <option>Orderan</option>
-                    <option>Bensin</option>
-                    <option>Servis</option>
-                    <option>Makan</option>
-                    <option>Lainnya</option>
-                </select>
+                <select id="kategori"></select>
 
                 <label for="tipe">Tipe (hanya untuk pengeluaran)</label>
                 <select id="tipe">

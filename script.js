@@ -1,6 +1,10 @@
 // data
 let transaksi = [];
 
+// kategori sesuai jenis
+const kategoriPemasukan = ["Order", "Tip", "Bonus", "Lainnya"];
+const kategoriPengeluaran = ["Bensin", "Servis", "Makan", "Parkir", "Lainnya"];
+
 function simpanData() {
     localStorage.setItem("transaksi", JSON.stringify(transaksi));
 }
@@ -13,6 +17,9 @@ function muatData() {
 }
 
 function formatRupiah(angka) {
+    if (angka < 0) {
+        return "-Rp" + Math.abs(angka).toLocaleString("id-ID");
+    }
     return "Rp" + angka.toLocaleString("id-ID");
 }
 
@@ -25,7 +32,27 @@ function tanggalHariIni() {
     return tahun + "-" + bulan + "-" + hari;
 }
 
-// perhitungan (W5 dan fitur khas ojol)
+// kategori sesuai jenis
+function isiKategori() {
+    const jenis = document.getElementById("jenis").value;
+    const pilihanKategori = document.getElementById("kategori");
+
+    let daftarKategori = kategoriPemasukan;
+    if (jenis === "pengeluaran") {
+        daftarKategori = kategoriPengeluaran;
+    }
+
+    pilihanKategori.innerHTML = '<option value="">-- pilih kategori --</option>';
+
+    daftarKategori.forEach(function (nama) {
+        const option = document.createElement("option");
+        option.value = nama;
+        option.textContent = nama;
+        pilihanKategori.appendChild(option);
+    });
+}
+
+// perhitungan
 function hitungRingkasan() {
     const totalMasuk = transaksi
         .filter(function (t) {
@@ -135,6 +162,9 @@ function hapusTransaksi(id) {
 const form = document.getElementById("formTransaksi");
 const pesanError = document.getElementById("pesanError");
 
+// kategori mengikuti jenis
+document.getElementById("jenis").addEventListener("change", isiKategori);
+
 form.addEventListener("submit", function (event) {
     event.preventDefault();
 
@@ -152,7 +182,7 @@ form.addEventListener("submit", function (event) {
         transaksiBaru.tipe = "";
     }
 
-    // validasi sebelum data disimpan
+    // validasi dicek sebelum data disimpan
     if (transaksiBaru.tanggal === "" || transaksiBaru.kategori === "") {
         pesanError.textContent = "Tanggal dan kategori wajib diisi.";
         return;
@@ -163,33 +193,16 @@ form.addEventListener("submit", function (event) {
         return;
     }
 
-    if (
-        transaksiBaru.jenis === "pengeluaran" &&
-        transaksiBaru.kategori === "Order"
-    ) {
-        pesanError.textContent = "Kategori Order hanya untuk pemasukan.";
-        return;
-    }
-
-    if (
-        transaksiBaru.jenis === "pemasukan" &&
-        (transaksiBaru.kategori === "Bensin" ||
-            transaksiBaru.kategori === "Servis" ||
-            transaksiBaru.kategori === "Makan")
-    ) {
-        pesanError.textContent =
-            "Kategori Bensin, Servis, dan Makan hanya untuk pengeluaran.";
-        return;
-    }
-
     pesanError.textContent = "";
 
     transaksi.push(transaksiBaru);
     simpanData();
     tampilkanSemua();
     form.reset();
+    isiKategori(); 
 });
 
 // mulai
 muatData();
+isiKategori();
 tampilkanSemua();
