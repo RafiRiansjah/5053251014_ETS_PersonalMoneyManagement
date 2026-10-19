@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CUJOL: Cuan Untuk Ojol</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>CUJOL: Cuan Untuk Ojol</h1>
+    </header>
+
+    <main>
+        <section id="ringkasan">
+            <h2>Catatan</h2>
+            <p>Pemasukan: <span id="totalMasuk">Rp0</span></p>
+            <p>Pengeluaran: <span id="totalKeluar">Rp0</span></p>
+            <p>Saldo: <span id="saldo">Rp0</span></p>
+        </section>
+
+        <section id="pendapatanBersih">
+            <h2>Pendapatan Bersih Hari Ini</h2>
+            <p>Pendapatan: <span id="masukHariIni">Rp0</span></p>
+            <p>Biaya operasional: <span id="operasionalHariIni">Rp0</span></p>
+            <p><strong>Bersih: <span id="bersihHariIni">Rp0</span></strong></p>
+        </section>
+
+        <section>
+            <h2>Tambah Transaksi</h2>
+            <form id="formTransaksi">
+                <label for="tanggal">Tanggal</label>
+                <input type="date" id="tanggal">
+
+                <label for="jenis">Jenis</label>
+                <select id="jenis">
+                    <option value="pemasukan">Pemasukan</option>
+                    <option value="pengeluaran">Pengeluaran</option>
+                </select>
+
+                <label for="kategori">Kategori</label>
+                <select id="kategori">
+                    <option value="">-- pilih kategori --</option>
+                    <option>Orderan</option>
+                    <option>Bensin</option>
+                    <option>Servis</option>
+                    <option>Makan</option>
+                    <option>Lainnya</option>
+                </select>
+
+                <label for="tipe">Tipe (hanya untuk pengeluaran)</label>
+                <select id="tipe">
+                    <option value="operasional">Operasional (bensin, servis)</option>
+                    <option value="pribadi">Pribadi</option>
+                </select>
+
+                <label for="nominal">Nominal (Rp)</label>
+                <input type="number" id="nominal">
+
+                <label for="catatan">Catatan</label>
+                <input type="text" id="catatan">
+
+                <p id="pesanError"></p>
+                <button type="submit">Simpan</button>
+            </form>
+        </section>
+
+        <section>
+            <h2>Daftar Transaksi</h2>
+            <ul id="daftar"></ul>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
