@@ -1,38 +1,115 @@
 body {
     font-family: Arial, sans-serif;
+    background-color: #f2f4f7;
+    color: #222;
+    margin: 0;
+}
+
+header {
+    background-color: #1b8a5a;
+    color: white;
+    text-align: center;
+    padding: 30px 24px;
+}
+
+h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+main {
     max-width: 600px;
     margin: 0 auto;
     padding: 16px;
 }
 
+/* setiap section menjadi satu kartu */
 section {
-    margin-bottom: 24px;
+    background-color: white;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
+h2 {
+    margin-top: 0;
+    font-size: 18px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #eee;
+}
+
+/* kartu pendapatan bersih dibuat menonjol */
+#pendapatanBersih {
+    background-color: #e8f6ef;
+    border-left: 6px solid #1b8a5a;
+}
+
+/* form */
 form {
     display: flex;
     flex-direction: column;
     gap: 8px;
 }
 
-#pesanError {
-    color: red;
+label {
+    font-weight: bold;
 }
 
+input,
+select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+button {
+    padding: 10px;
+    background-color: #1b8a5a;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #14673f;
+}
+
+#pesanError {
+    color: red;
+    margin: 0;
+}
+
+/* daftar transaksi */
 ul {
     list-style: none;
     padding: 0;
+    margin: 0;
 }
 
 li {
-    padding: 8px 0;
-    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
 }
 
 li.pemasukan {
-    color: green;
+    color: #1b8a5a;
 }
 
 li.pengeluaran {
-    color: red;
+    color: #d64545;
+}
+
+li button {
+    margin-left: 8px;
+    padding: 4px 10px;
+    font-size: 14px;
+    background-color: #d64545;
+}
+
+li button:hover {
+    background-color: #b33232;
 }
